@@ -1,10 +1,9 @@
 name: "Bedrock Server Manager"
-version: "3.6.3b2"
+version: "1.0.0"
 slug: "bedrock_server_manager"
 description: "A manager for Minecraft Bedrock Edition servers."
 arch:
   - amd64
-image: "ghcr.io/dmedina559/bedrock-server-manager"
 init: false
 startup: "application"
 boot: "auto"
