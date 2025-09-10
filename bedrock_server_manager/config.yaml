@@ -1,0 +1,23 @@
+name: "Bedrock Server Manager"
+version: "3.6.3b2"
+slug: "bedrock_server_manager"
+description: "A manager for Minecraft Bedrock Edition servers."
+arch:
+  - amd64
+image: "ghcr.io/dmedina559/bedrock-server-manager"
+init: false
+startup: "application"
+boot: "auto"
+host_network: true
+ingress: true
+ingress_port: 11325
+panel_icon: "mdi:minecraft"
+watchdog: "http://[HOST]:[PORT:11325]/"
+map:
+  - data:rw
+options:
+  HOST: "0.0.0.0"
+  PORT: 11325
+schema:
+  HOST: str
+  PORT: port
