@@ -4,8 +4,13 @@ FROM ${BUILD_FROM}
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install bedrock-server-manager
-RUN pip install bedrock-server-manager
+# Install runtime dependencies
+RUN apk add --no-cache libcurl mariadb-client
+
+# Install build dependencies, then bedrock-server-manager with db extras, then remove build deps
+RUN apk add --no-cache --virtual .build-deps gcc musl-dev linux-headers python3-dev pkgconf && \
+    pip install "bedrock-server-manager[mysql,mariadb,postgresql]" && \
+    apk del .build-deps
 
 # Copy run.sh
 COPY run.sh /
